@@ -49,7 +49,7 @@ class Input {
       projectPath,
       testMode,
       artifactsPath,
-	  useHostNetwork,
+      useHostNetwork,
       customParameters,
     };
   }
