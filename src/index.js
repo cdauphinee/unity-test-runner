@@ -10,7 +10,7 @@ async function action() {
     projectPath,
     testMode,
     artifactsPath,
-	useHostNetwork,
+    useHostNetwork,
     customParameters,
   } = Input.getFromUser();
   const baseImage = ImageTag.createForBase(unityVersion);
@@ -19,13 +19,13 @@ async function action() {
   const actionImage = await Docker.build({ path: actionFolder, dockerfile, baseImage });
 
   // Run docker image
-  await Docker.run(actionImage, {  
+  await Docker.run(actionImage, {
     workspace,
     unityVersion,
     projectPath,
     testMode,
     artifactsPath,
-	useHostNetwork,
+    useHostNetwork,
     customParameters,
   });
 
@@ -33,6 +33,6 @@ async function action() {
   await Output.setArtifactsPath(artifactsPath);
 }
 
-action().catch(error => {
+action().catch((error) => {
   core.setFailed(error.message);
 });

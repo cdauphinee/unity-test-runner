@@ -33,11 +33,11 @@ class Input {
     if (!this.isValidFolderName(rawProjectPath)) {
       throw new Error(`Invalid projectPath "${rawProjectPath}"`);
     }
-	
+
     if (rawUseHostNetwork !== 'true' && rawUseHostNetwork !== 'false') {
       throw new Error(`Invalid useHostNetwork "${rawUseHostNetwork}"`);
     }
-	
+
     // Sanitise input
     const projectPath = rawProjectPath.replace(/\/$/, '');
     const artifactsPath = rawArtifactsPath.replace(/\/$/, '');
