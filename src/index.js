@@ -19,7 +19,7 @@ async function action() {
   const actionImage = await Docker.build({ path: actionFolder, dockerfile, baseImage });
 
   // Run docker image
-  await Docker.run(actionImage, {
+  await Docker.run(actionImage, {  
     workspace,
     unityVersion,
     projectPath,

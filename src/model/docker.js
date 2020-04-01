@@ -24,7 +24,7 @@ class Docker {
       projectPath,
       testMode,
       artifactsPath,
-	  useHostNetwork,
+      useHostNetwork,
       customParameters,
     } = parameters;
 
@@ -61,7 +61,7 @@ class Docker {
         --volume "/home/runner/work/_temp/_github_home":"/github/home" \
         --volume "/home/runner/work/_temp/_github_workflow":"/github/workflow" \
         --volume "${workspace}":"/github/workspace" \
-		${useHostNetwork ? '--net=host' : ''} \
+        ${useHostNetwork ? '--net=host' : ''} \
         ${image}`;
 
     await exec(command, null, { silent });

@@ -1,6 +1,5 @@
 import { getInput } from '@actions/core';
 import { includes } from 'lodash-es';
-import getBooleanInput from 'get-boolean-action-input';
 
 class Input {
   static get testModes() {
@@ -19,7 +18,7 @@ class Input {
     const testMode = getInput('testMode') || 'all';
     const rawProjectPath = getInput('projectPath') || '.';
     const rawArtifactsPath = getInput('artifactsPath') || 'artifacts';
-	const useHostNetwork = getBooleanInput('useHostNetwork');
+    const rawUseHostNetwork = getInput('useHostNetwork') || 'false';
     const customParameters = getInput('customParameters') || '';
 
     // Validate input
@@ -35,9 +34,14 @@ class Input {
       throw new Error(`Invalid projectPath "${rawProjectPath}"`);
     }
 	
+    if (rawUseHostNetwork !== 'true' && rawUseHostNetwork !== 'false') {
+      throw new Error(`Invalid useHostNetwork "${rawUseHostNetwork}"`);
+    }
+	
     // Sanitise input
     const projectPath = rawProjectPath.replace(/\/$/, '');
     const artifactsPath = rawArtifactsPath.replace(/\/$/, '');
+    const useHostNetwork = rawUseHostNetwork === 'true';
 
     // Return sanitised input
     return {
