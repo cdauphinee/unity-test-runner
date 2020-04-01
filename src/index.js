@@ -33,6 +33,6 @@ async function action() {
   await Output.setArtifactsPath(artifactsPath);
 }
 
-action().catch((error) => {
+action().catch(error => {
   core.setFailed(error.message);
 });
